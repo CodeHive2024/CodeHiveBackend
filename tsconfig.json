@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "es2022", // Use 'es2022' or 'esnext' for ES Modules
+    "target": "es2020", // Or higher, depending on your environment
+    "moduleResolution": "node", // Standard Node.js resolution strategy
+    "strict": true, // Optional, for strict type-checking
+    "esModuleInterop": true, // Optional, helps with CommonJS compatibility
+    "resolveJsonModule": true, // Optional, if you're using JSON imports
+    "outDir": "dist/"
+  },
+  "include": ["src", "./package.json"], // Include all TypeScript files in 'src'
+
+  "exclude": ["node_modules"] // Exclude dependencies
+}
+// {
+//   "compilerOptions": {
+//     "moduleResolution": "node",
+//     "esModuleInterop": true,
+//     "target": "ESNext",
+//     "module": "ESNext",
+//     "outDir": "./dist",
+//     "baseUrl": "./src",
+//     "paths": {
+//       "*": ["node_modules/*", "src/*"]
+//     }
+//   }
+// }
