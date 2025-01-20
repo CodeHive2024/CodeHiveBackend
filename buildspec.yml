@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14 # Use Node.js version 14 or update according to your project
+    commands:
+      - echo Installing dependencies...
+      - npm install # Install your dependencies from package.json
+
+  build:
+    commands:
+      - echo Building the project...
+      - npm run build # Replace with the build command for your project
+
+  post_build:
+    commands:
+      - echo Build completed.
+      - echo Preparing for deployment...
+      - cd dist # Change into the dist directory
+      - zip -r ../deployment.zip . # Zip all files inside dist/ and move the zip file one level up
+artifacts:
+  files:
+    - deployment.zip
+  discard-paths: true
