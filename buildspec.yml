@@ -18,6 +18,8 @@ phases:
       - echo Build completed.
       - echo Preparing for deployment...
       - cd dist # Change into the dist directory
+      - echo Installing dependencies...
+      - npm install # Install your dependencies from package.json
       - zip -r ../deployment.zip . # Zip all files inside dist/ and move the zip file one level up
 artifacts:
   files:
