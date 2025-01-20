@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14 # Use Node.js version 14 or update according to your project
+      nodejs: 18 # Use Node.js version 14 or update according to your project
     commands:
       - echo Installing dependencies...
       - npm install # Install your dependencies from package.json
