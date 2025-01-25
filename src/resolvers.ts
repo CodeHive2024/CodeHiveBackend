@@ -34,5 +34,30 @@ export const resolvers = {
         throw new Error(JSON.stringify(error));
       }
     },
+    login: async (_: any, { username, password }: any) => {
+      const params: AWS.CognitoIdentityServiceProvider.InitiateAuthRequest = {
+        AuthFlow: "USER_PASSWORD_AUTH", // Authentication flow type for username/password login
+        ClientId: process.env.COGNITO_APP_CLIENT_ID!, // App Client ID from Cognito
+        AuthParameters: {
+          USERNAME: username, // The username passed from the client
+          PASSWORD: password, // The password passed from the client
+        },
+      };
+
+      try {
+        // Authenticate user with Cognito
+        const data = await cognito.initiateAuth(params).promise();
+
+        // Return the tokens if authentication is successful
+        return {
+          idToken: data.AuthenticationResult?.IdToken,
+          accessToken: data.AuthenticationResult?.AccessToken,
+          refreshToken: data.AuthenticationResult?.RefreshToken,
+        };
+      } catch (error) {
+        console.error("Authentication failed:", error);
+        throw new Error("Authentication failed: " + JSON.stringify(error));
+      }
+    },
   },
 };

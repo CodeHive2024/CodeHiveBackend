@@ -5,6 +5,12 @@ export const typeDefs = `#graphql
     phoneNumber: String
   }
 
+  type AuthPayload {
+    idToken: String
+    accessToken: String
+    refreshToken: String
+  }
+
   type Query {
     _empty: String
   }
@@ -16,5 +22,10 @@ export const typeDefs = `#graphql
       email: String!
       phoneNumber: String
     ): User
+
+    login(
+      username: String!
+      password: String!
+    ): AuthPayload
   }
 `;
