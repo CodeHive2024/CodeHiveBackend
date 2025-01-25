@@ -5,11 +5,18 @@ export const typeDefs = `#graphql
     phoneNumber: String
   }
 
-  type AuthPayload {
+  type AuthTokens {
     idToken: String
     accessToken: String
     refreshToken: String
   }
+
+  type AuthMessage {
+    code: String
+    message: String
+  }
+
+  union AuthPayload = AuthTokens | AuthMessage
 
   type Query {
     _empty: String
@@ -27,5 +34,18 @@ export const typeDefs = `#graphql
       username: String!
       password: String!
     ): AuthPayload
+
+    resendCode(
+      username: String!
+    ): AuthMessage
+
+    verifyCode(
+      username: String!
+      code: String!
+    ): AuthMessage
+
+    refreshTokens(
+      refreshToken: String!
+    ): AuthTokens
   }
 `;
