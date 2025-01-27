@@ -1,14 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
-const { ApolloServer } = require("apollo-server-express");
+import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./schema.js";
 import { resolvers } from "./resolvers.js";
 import logger from "./utils/logger.js";
-import express from "express";
+import express, { Application } from "express";
 import { Server as SocketIOServer } from "socket.io"; // Correct import
 import cors from "cors";
 
-const app = express();
+const app: any = express();
 
 const corsOptions = {
   origin: "*", // Adjust this to allow only specific origins

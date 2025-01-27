@@ -9,7 +9,7 @@ import {
   AuthFlowType,
 } from "@aws-sdk/client-cognito-identity-provider";
 import jwt from "jsonwebtoken";
-import logger from "./utils/logger";
+import logger from "./utils/logger.js";
 
 const cognitoClient = new CognitoIdentityProviderClient({
   region: process.env.AWS_REGION,
