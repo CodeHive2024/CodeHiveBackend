@@ -22,6 +22,7 @@ phases:
       - npm install # Install your dependencies from package.json
       - zip -r ../deployment.zip . # Zip all files inside dist/ and move the zip file one level up
 artifacts:
+  type: zip
   files:
     - deployment.zip
   discard-paths: true
