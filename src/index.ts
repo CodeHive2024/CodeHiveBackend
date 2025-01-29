@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./schema.js";
-import { resolvers } from "./resolvers.js";
+import { resolvers } from "./resolvers/resolvers.js";
 import logger from "./utils/logger.js";
 import express, { Application } from "express";
 import { Server as SocketIOServer } from "socket.io"; // Correct import
