@@ -22,6 +22,7 @@ export const typeDefs = `#graphql
     _empty: String
   }
 
+  
   type Mutation {
     signup(
       username: String!
