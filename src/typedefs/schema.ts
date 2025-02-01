@@ -2,7 +2,8 @@ export const typeDefs = `#graphql
   type User {
     username: String
     email: String
-    phoneNumber: String
+    firstName: String
+    lastName: String
   }
 
   type AuthTokens {
@@ -25,10 +26,10 @@ export const typeDefs = `#graphql
   
   type Mutation {
     signup(
-      username: String!
-      password: String!
       email: String!
-      phoneNumber: String
+      firstName: String!
+      lastName: String!
+      password: String!
     ): User
 
     login(

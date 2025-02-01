@@ -17,15 +17,12 @@ const cognitoClient = new CognitoIdentityProviderClient({
 
 export const resolvers = {
   Mutation: {
-    signup: async (_: any, { username, password, email, phoneNumber }: any) => {
+    signup: async (_: any, { email, firstName, lastName, password }: any) => {
       const params = {
         ClientId: process.env.COGNITO_APP_CLIENT_ID!,
-        Username: username,
+        Username: email,
         Password: password,
-        UserAttributes: [
-          { Name: "email", Value: email },
-          { Name: "phone_number", Value: phoneNumber || "" },
-        ],
+        UserAttributes: [{ Name: "email", Value: email }],
       };
 
       const signUpCommand = new SignUpCommand(params);
@@ -37,17 +34,18 @@ export const resolvers = {
         });
         return {
           username: data.UserSub,
+          firstName,
+          lastName,
           email,
-          phoneNumber: phoneNumber || "",
         };
       } catch (error: unknown) {
         if (error instanceof Error) {
-          logger.error(`Error signing up user: ${username}: ${error.message}`);
+          logger.error(`Error signing up user: ${email}: ${error.message}`);
           throw new Error(
-            `Failed to sign up user: ${username}. Error: ${error.message}`
+            `Failed to sign up user: ${email}. Error: ${error.message}`
           );
         } else {
-          logger.error(`Unexpected error signing up user: ${username}`);
+          logger.error(`Unexpected error signing up user: ${email}`);
           throw new Error(`Unexpected error occurred during sign up`);
         }
       }
