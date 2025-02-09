@@ -1,20 +1,30 @@
-![](https://miro.medium.com/max/1000/1*M8AVkWO91P7OH7MrYRe57w.png)
-# typescript-jest-example
-This is an example project for the following articles on [medium.com](https://medium.com):
-- [Testing with JEST in TypeScript](https://itnext.io/testing-with-jest-in-typescript-cc1cd0095421)
-- [Debug your tests in TypeScript with Visual Studio Code](https://bromix.medium.com/debug-your-tests-in-typescript-with-visual-studio-code-911a4cada9cd)
-
-## Project setup
+# CodeHiveBackend
+The backend is currently split into graphql and socketio. We aren't setting up any traditional rest apis at the moment. You can research the conveniences of graphql. Socketio is being used for live transactions/feedback between the ui and backend.
+## Local project setup
+- Install dependencies
 ```
 npm install
 ```
+- Ask on discord for env file
+```
+npm run dev
+```
+Go to http://localhost:3001/graphql to see graphql console. Ask team members if they already have a collection of requests, so you don't have to start from scratch.
 
-### Compile to typescript
+- To start local dbs
+```
+docker compose up
+```
+
+- To view neo4j data, install ne04j desktop.
+- To view dynamo data, just go to localstack site - https://app.localstack.cloud/inst/default/resources.
+
+## Compile to typescript
 ```
 npm run build
 ```
 
-### Run tests
+## Run tests
 ```
 npm test
 ```
