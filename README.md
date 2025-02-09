@@ -6,6 +6,7 @@ The backend is currently split into graphql and socketio. We aren't setting up a
 npm install
 ```
 - Ask on discord for env file
+- Start the server
 ```
 npm run dev
 ```
