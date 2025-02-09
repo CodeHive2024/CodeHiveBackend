@@ -1,4 +1,4 @@
-import resolvers from "../../src/auth/authResolver";
+import resolvers from "../../src/graphql/auth/authResolver";
 import { CognitoIdentityProviderClient } from "@aws-sdk/client-cognito-identity-provider";
 import jwt from "jsonwebtoken";
 import logger from "../../src/utils/logger";

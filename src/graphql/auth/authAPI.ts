@@ -10,8 +10,8 @@ import {
   AdminGetUserCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import jwt from "jsonwebtoken";
-import logger from "../utils/logger";
-import runNeo4jAction from "../config/neo4j";
+import logger from "../../utils/logger";
+import runNeo4jAction from "../../config/neo4j";
 import { Session } from "neo4j-driver";
 
 const cognitoClient = new CognitoIdentityProviderClient({

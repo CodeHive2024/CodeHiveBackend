@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 import { ApolloServer } from "apollo-server-express";
-import authResolver from "./auth/authResolver";
-import userResolver from "./user/userResolver";
+import authResolver from "./graphql/auth/authResolver";
+import userResolver from "./graphql/user/userResolver";
 import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeResolvers, mergeTypeDefs } from "@graphql-tools/merge";
 import logger from "./utils/logger.js";
