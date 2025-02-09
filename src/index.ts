@@ -1,8 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./typedefs/schema.js";
-import { resolvers } from "./resolvers/resolvers.js";
+import authResolver from "./auth/authResolver";
+import userResolver from "./user/userResolver";
+import { loadFilesSync } from "@graphql-tools/load-files";
+import { mergeResolvers, mergeTypeDefs } from "@graphql-tools/merge";
 import logger from "./utils/logger.js";
 import express, { Application } from "express";
 import { Server as SocketIOServer } from "socket.io"; // Correct import
@@ -17,6 +19,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions)); // Apply CORS middleware
+
+const typeDefs = mergeTypeDefs(loadFilesSync("./**/*.graphql"));
+
+const resolvers = mergeResolvers([authResolver, userResolver]);
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const startServer = async () => {

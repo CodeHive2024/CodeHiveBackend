@@ -1,7 +1,7 @@
-import { resolvers } from "../src/resolvers";
+import resolvers from "../../src/auth/authResolver";
 import { CognitoIdentityProviderClient } from "@aws-sdk/client-cognito-identity-provider";
 import jwt from "jsonwebtoken";
-import logger from "../src/utils/logger";
+import logger from "../../src/utils/logger";
 
 // Mock AWS SDK
 jest.mock("@aws-sdk/client-cognito-identity-provider", () => {
@@ -15,7 +15,7 @@ jest.mock("@aws-sdk/client-cognito-identity-provider", () => {
 });
 
 // Mock logger
-jest.mock("../src/utils/logger", () => ({
+jest.mock("../../src/utils/logger", () => ({
   info: jest.fn(),
   error: jest.fn(),
   warn: jest.fn(),
