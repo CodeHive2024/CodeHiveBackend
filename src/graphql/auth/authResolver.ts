@@ -14,6 +14,7 @@ const authResolver = {
     verifyCode: verifyCode,
     refreshTokens: refreshTokens,
   },
+  
   AuthPayload: {
     __resolveType: (value: any) => {
       if (value.idToken) {
