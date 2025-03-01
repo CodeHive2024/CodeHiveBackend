@@ -11,6 +11,14 @@ type AuthMessage {
 
 union AuthPayload = AuthTokens | AuthMessage
 
+type StreamTokens {
+  authToken: String
+}
+
+type Query {
+  streamTokens(userId: String): StreamTokens
+}
+
 type Mutation {
   signup(
     username: String!

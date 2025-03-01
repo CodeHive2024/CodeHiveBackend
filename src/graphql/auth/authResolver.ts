@@ -1,4 +1,5 @@
 import {
+  generateStreamTokens,
   login,
   refreshTokens,
   resendCode,
@@ -7,6 +8,9 @@ import {
 } from "./authAPI";
 
 const authResolver = {
+  Query: {
+    streamTokens: generateStreamTokens,
+  },
   Mutation: {
     signup: signup,
     login: login,

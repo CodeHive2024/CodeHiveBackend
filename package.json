@@ -26,6 +26,7 @@
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.734.0",
     "@graphql-tools/load-files": "^7.0.1",
+    "@stream-io/node-sdk": "^0.4.16",
     "@types/express": "^5.0.0",
     "apollo-server-express": "^3.13.0",
     "body-parser": "^1.20.3",

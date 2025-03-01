@@ -13,6 +13,7 @@ import jwt from "jsonwebtoken";
 import logger from "../../utils/logger";
 import runNeo4jAction from "../../config/neo4j";
 import { Session } from "neo4j-driver";
+import { StreamClient } from "@stream-io/node-sdk";
 
 const cognitoClient = new CognitoIdentityProviderClient({
   region: process.env.AWS_REGION,
@@ -252,4 +253,16 @@ const registerUserInNeo4j = async ({
 
   const createdUserNode = await runNeo4jAction(action);
   console.log("Created User Node:", createdUserNode);
+};
+
+export const generateStreamTokens = (
+  _: any,
+  { userId }: { userId: string }
+) => {
+  const apiKey = process.env.STREAM_API_KEY;
+  const secret = process.env.STREAM_API_SECRET;
+  const client = new StreamClient(apiKey!, secret!);
+  return {
+    authToken: client.generateUserToken({ user_id: userId }),
+  };
 };
